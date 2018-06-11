@@ -12,9 +12,11 @@ public:
 	int getMonth() const;
 	int getYear() const;
 	bool isLeapYear(int);
-	int monthDays() const;
+	int monthDays(int, int);
+	int daysPassed(int, int, int);
+	int daysRemaining(int, int, int);
 	void printDate()const;
-	dateType(int month = 0, int day = 1, int year = 2000);
+	dateType(int month = 0, int day = 0, int year = 0);
 
 private:
 	int dMonth;

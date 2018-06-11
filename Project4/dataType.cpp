@@ -13,6 +13,7 @@ void dateType::setDate(int month, int day, int year) {
 	}
 
 
+
 	//if statements checking if the date is valid. if it is valid, then it moves to the next check.
 	if (year >= 0) {
 		if (month >= 1 && month <= 12) {
@@ -53,16 +54,29 @@ void dateType::setDate(int month, int day, int year) {
 		dYear = 0;
 	}
 }
+
+
 dateType::dateType(int month, int day, int year) {
-	cout << "Please enter a month: ";
-	cin >> month;
-	cout << "Please enter a day: ";
-	cin >> day;
-	cout << "Please enter a year: ";
-	cin >> year;
+	//cout << "Please enter a month: ";
+	//cin >> month;
+	//cout << "Please enter a day: ";
+	//cin >> day;
+	//cout << "Please enter a year: ";
+	//cin >> year;
+
 	setDate(month, day, year);
 }
 
+//getting the day, month, and year
+int dateType::getDay() const {
+	return dDay;
+}
+int dateType::getMonth() const {
+	return dMonth;
+}
+int dateType::getYear() const {
+	return dYear;
+}
 
 bool dateType::isLeapYear(int year) {
 	//if the year is devisible by 100 and 4, it also has to be divisible by 400 to be a leap year
@@ -80,17 +94,18 @@ bool dateType::isLeapYear(int year) {
 }
 
 //This checks how many days are in a month and returns the amount.
-int dateType::monthDays() const {
+int dateType::monthDays(int year, int month) {
 	//default day is 31
-	int month = 0;
+	int leapDay = 28;
 	int day = 31;
-	cout << "Please enter a month: ";
-	cin >> month;
+	if (isLeapYear(year) == true) {
+		leapDay = 29;
+	}
 	//sets the days of the month
 	if (month > 0 && month < 13) {
 		switch (month) {
 		case 2:
-			day = 28;
+			day = leapDay;
 			break;
 		case 4:
 			day = 30;
@@ -105,20 +120,32 @@ int dateType::monthDays() const {
 			day = 30;
 			break;
 		}
-		cout << "There are " << day << " days in month " << month << endl;
 	}
 	else {
-		cout << "You have not entered a valid month." << endl;
+		cout << "Not a valid month." << endl;
 	}
 	return day;
 }
 
-int dateType::getDay() const {
-	return dDay;
+int dateType::daysPassed(int month, int days, int year){
+	int totDays = 0;
+	//takes the value and adds together the days for each month
+	for (int i = 1; i < month; i++) {
+		totDays += monthDays(year, i);
+	}
+	//adding in remaining days
+	days = totDays + days;
+	return days;
 }
-int dateType::getMonth() const {
-	return dMonth;
-}
-int dateType::getYear() const {
-	return dYear;
+
+int dateType::daysRemaining(int month, int days, int year){
+	int daysInYear = 0;
+
+	if (isLeapYear(year) == false) {
+		daysInYear = 365;
+	}
+	else {
+		daysInYear = 366;
+	}
+	return(daysInYear - daysPassed(month, days, year));
 }
