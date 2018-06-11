@@ -141,9 +141,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dateType.h" />
+    <ClInclude Include="extDateType.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dataType.cpp" />
+    <ClCompile Include="extDateType.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

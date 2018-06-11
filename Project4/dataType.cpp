@@ -39,7 +39,7 @@ void dateType::setDate(int month, int day, int year) {
 		}
 	}
 	if (valid == true) {
-		cout << "This is a valid date." << endl;
+		cout << "The date is " << month << ", " << day << ", " << year << ". This is a valid date." << endl;
 		dMonth = month;
 		dDay = day;
 		dYear = year;
@@ -59,7 +59,6 @@ dateType::dateType(int month, int day, int year) {
 	//cin >> day;
 	//cout << "Please enter a year: ";
 	//cin >> year;
-
 	setDate(month, day, year);
 }
 

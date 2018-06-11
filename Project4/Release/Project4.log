@@ -1,0 +1,5 @@
+﻿  dataType.cpp
+  extDateType.cpp
+  main.cpp
+main.obj : error LNK2001: unresolved external symbol "public: __thiscall extDateType::extDateType(int,int,int)" (??0extDateType@@QAE@HHH@Z)
+C:\Users\Kathy\source\repos\Chapter 11\Release\Project4.exe : fatal error LNK1120: 1 unresolved externals
