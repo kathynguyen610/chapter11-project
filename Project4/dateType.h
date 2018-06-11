@@ -16,13 +16,12 @@ public:
 	int daysPassed(int, int, int);
 	int daysRemaining(int, int, int);
 	void printDate()const;
+	int newDate(int, int, int, int);
 	dateType(int month = 0, int day = 0, int year = 0);
-
 private:
 	int dMonth;
 	int dDay;
 	int dYear;
-
 };
 
 #endif

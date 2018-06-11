@@ -11,9 +11,6 @@ void dateType::setDate(int month, int day, int year) {
 	if (isLeapYear(year) == true) {
 		leapDay = 29; 
 	}
-
-
-
 	//if statements checking if the date is valid. if it is valid, then it moves to the next check.
 	if (year >= 0) {
 		if (month >= 1 && month <= 12) {
@@ -54,7 +51,6 @@ void dateType::setDate(int month, int day, int year) {
 		dYear = 0;
 	}
 }
-
 
 dateType::dateType(int month, int day, int year) {
 	//cout << "Please enter a month: ";
@@ -122,11 +118,12 @@ int dateType::monthDays(int year, int month) {
 		}
 	}
 	else {
+		cout << month;
 		cout << "Not a valid month." << endl;
 	}
 	return day;
 }
-
+//calculates how many days have passed with the month, day, and year
 int dateType::daysPassed(int month, int days, int year){
 	int totDays = 0;
 	//takes the value and adds together the days for each month
@@ -137,7 +134,7 @@ int dateType::daysPassed(int month, int days, int year){
 	days = totDays + days;
 	return days;
 }
-
+//calculates how many days are remaining after a certain date
 int dateType::daysRemaining(int month, int days, int year){
 	int daysInYear = 0;
 
@@ -148,4 +145,27 @@ int dateType::daysRemaining(int month, int days, int year){
 		daysInYear = 366;
 	}
 	return(daysInYear - daysPassed(month, days, year));
+}
+
+//calculates new date based on how many days specified
+int dateType::newDate(int month, int days, int year, int addedDays) {
+	int i = 0;
+	for (i = addedDays; i > 0; i--) {
+		days++;
+		if (days > monthDays(year, month)) {
+			days = 1;
+			if (month >= 12) {
+				year++;
+				month = 1;
+				days = 1;
+			}
+			else {
+				month++;
+			}
+		}
+	}
+	cout << "Month: " << month << endl;
+	cout << "Day: " << days << endl;
+	cout << "Year: " << year << endl;
+	return 0;
 }
