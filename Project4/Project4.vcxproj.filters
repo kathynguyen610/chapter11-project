@@ -21,6 +21,9 @@
     <ClInclude Include="extDateType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="calendarType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dataType.cpp">
@@ -30,6 +33,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="extDateType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="calendarType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

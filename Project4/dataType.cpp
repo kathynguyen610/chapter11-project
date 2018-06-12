@@ -39,40 +39,44 @@ void dateType::setDate(int month, int day, int year) {
 		}
 	}
 	if (valid == true) {
-		cout << "The date is " << month << ", " << day << ", " << year << ". This is a valid date." << endl;
 		dMonth = month;
 		dDay = day;
 		dYear = year;
 	}
 	else {
-		cout << "This is not a valid date." << endl;
 		dMonth = 0;
 		dDay = 0;
 		dYear = 0;
 	}
 }
-
-dateType::dateType(int month, int day, int year) {
-	//cout << "Please enter a month: ";
-	//cin >> month;
-	//cout << "Please enter a day: ";
-	//cin >> day;
-	//cout << "Please enter a year: ";
-	//cin >> year;
-	setDate(month, day, year);
-}
-
-//getting the day, month, and year
-int dateType::getDay() const {
-	return dDay;
-}
-int dateType::getMonth() const {
-	return dMonth;
-}
-int dateType::getYear() const {
+//getters
+int dateType::getYear() const{
 	return dYear;
 }
 
+int dateType::getMonth() const {
+	return dMonth;
+}
+
+int dateType::getDay() const {
+	return dDay;
+}
+
+//setters
+void dateType::setDay(int day)  {
+	dDay = day;
+}
+void dateType::setMonth(int month)  {
+	dMonth = month;
+}
+void dateType::setYear(int year)  {
+	dYear = year;
+}
+dateType::dateType(int month, int day, int year) {
+	setDate(month, day, year);
+}
+
+//checks if the year is a leap year and returns true/false
 bool dateType::isLeapYear(int year) {
 	//if the year is devisible by 100 and 4, it also has to be divisible by 400 to be a leap year
 	//for example, 2000 is a leap year but 1700 is not
@@ -143,11 +147,13 @@ int dateType::daysRemaining(int month, int days, int year){
 	else {
 		daysInYear = 366;
 	}
+	cout << "The date is " << month << ", " << days << ", " << year << ". There are " << daysInYear - daysPassed(month, days, year) << " days remaining in the year."<< endl;
 	return(daysInYear - daysPassed(month, days, year));
 }
 
 //calculates new date based on how many days specified
 int dateType::newDate(int month, int days, int year, int addedDays) {
+	cout << "The previous date was " << month << ", " << days << ", " << year << endl;
 	int i = 0;
 	for (i = addedDays; i > 0; i--) {
 		days++;
@@ -163,8 +169,6 @@ int dateType::newDate(int month, int days, int year, int addedDays) {
 			}
 		}
 	}
-	cout << "Month: " << month << endl;
-	cout << "Day: " << days << endl;
-	cout << "Year: " << year << endl;
+	cout << "If you would like to add " << addedDays << " days, the new date is " << month << ", " << days << ", " << year << endl;
 	return 0;
 }
